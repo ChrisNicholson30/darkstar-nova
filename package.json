@@ -1,0 +1,15 @@
+{
+  "name": "darkstar-nova",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A cross-platform developer theme family with shared semantic design tokens.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "node scripts/validate.mjs",
+    "test": "npm run build && npm run validate && node --test"
+  }
+}

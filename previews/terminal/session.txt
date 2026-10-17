@@ -1,0 +1,7 @@
+$ git status --short
+ M design/tokens.json
+?? themes/zed/darkstar-nova.json
+?? previews/
+
+$ git log --oneline
+a1b2c3d Add theme palette and editor styles

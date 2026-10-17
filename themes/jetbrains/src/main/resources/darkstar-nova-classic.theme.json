@@ -1,0 +1,85 @@
+{
+  "name": "Darkstar Nova Classic",
+  "dark": true,
+  "author": "Chris Nicholson",
+  "parentTheme": "Darcula",
+  "editorScheme": "/darkstar-nova-classic.xml",
+  "ui": {
+    "*": {
+      "background": "#21252B",
+      "foreground": "#ABB2BF",
+      "disabledForeground": "#9298A4",
+      "borderColor": "#3E4451",
+      "focusColor": "#61AFEF",
+      "focusedBorderColor": "#61AFEF",
+      "selectionBackground": "#414B5B",
+      "selectionForeground": "#ABB2BF",
+      "errorForeground": "#F08088",
+      "successForeground": "#98C379"
+    },
+    "MainWindow": {
+      "background": "#282C34"
+    },
+    "EditorTabs": {
+      "background": "#21252B",
+      "underlinedTabBackground": "#282C34",
+      "underlinedTabForeground": "#61AFEF",
+      "inactiveUnderlineColor": "#3E4451"
+    },
+    "ToolWindow": {
+      "background": "#21252B",
+      "borderColor": "#3E4451"
+    },
+    "ToolWindow.Header": {
+      "background": "#21252B",
+      "foreground": "#ABB2BF"
+    },
+    "PopupMenu": {
+      "background": "#353B45",
+      "foreground": "#ABB2BF",
+      "borderColor": "#3E4451",
+      "selectionBackground": "#414B5B",
+      "selectionForeground": "#ABB2BF"
+    },
+    "Menu": {
+      "background": "#21252B",
+      "foreground": "#ABB2BF",
+      "selectionBackground": "#414B5B",
+      "selectionForeground": "#ABB2BF"
+    },
+    "TabbedPane": {
+      "background": "#21252B",
+      "selectedBackground": "#282C34",
+      "underlineColor": "#61AFEF"
+    },
+    "Tree": {
+      "background": "#21252B",
+      "foreground": "#ABB2BF",
+      "selectionBackground": "#414B5B",
+      "selectionForeground": "#ABB2BF"
+    },
+    "TextField": {
+      "background": "#282C34",
+      "foreground": "#ABB2BF",
+      "borderColor": "#3E4451",
+      "focusColor": "#61AFEF"
+    },
+    "Button": {
+      "background": "#2C313A",
+      "foreground": "#ABB2BF"
+    },
+    "StatusBar": {
+      "background": "#21252B",
+      "foreground": "#ABB2BF"
+    },
+    "Notification": {
+      "background": "#353B45",
+      "foreground": "#ABB2BF",
+      "borderColor": "#3E4451"
+    },
+    "ScrollBar": {
+      "thumbColor": "#9298A4",
+      "trackColor": "#282C34"
+    }
+  }
+}

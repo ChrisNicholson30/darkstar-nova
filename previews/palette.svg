@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="284" viewBox="0 0 900 284" role="img" aria-labelledby="title description">
+  <title id="title">Darkstar Nova palette preview</title>
+  <desc id="description">Three theme variants with their editor backgrounds and signature syntax colours.</desc>
+  <rect width="900" height="284" rx="18" fill="#11151E"/>
+  <text x="28" y="40" fill="#E8EDF7" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Darkstar Nova</text>
+  <text x="28" y="63" fill="#8290A5" font-family="system-ui, sans-serif" font-size="12">A palette swatch — not an application screenshot</text>
+  <g font-family="system-ui, sans-serif" font-size="13">
+    <g transform="translate(24 88)">
+      <rect width="272" height="164" rx="12" fill="#282C34" stroke="#3E4451"/>
+      <text x="16" y="26" fill="#ABB2BF" font-weight="700">CLASSIC</text>
+      <text x="16" y="61" fill="#C678DD">async</text>
+      <text x="62" y="61" fill="#61AFEF"> loadAccount</text>
+      <text x="145" y="61" fill="#C2C7D0">(</text>
+      <text x="154" y="61" fill="#56B6C2">Account</text>
+      <text x="212" y="61" fill="#C2C7D0">&lt;T&gt;)</text>
+      <text x="16" y="91" fill="#98C379">"Nova"</text>
+      <text x="77" y="91" fill="#9298A4">// familiar balance</text>
+      <text x="16" y="121" fill="#D19A66">42</text>
+      <text x="41" y="121" fill="#ABB2BF">; readable and calm</text>
+    </g>
+    <g transform="translate(314 88)">
+      <rect width="272" height="164" rx="12" fill="#171B26" stroke="#323B4D"/>
+      <text x="16" y="26" fill="#E8EDF7" font-weight="700">ULTRA</text>
+      <text x="16" y="61" fill="#C792EA">async</text>
+      <text x="62" y="61" fill="#82AAFF"> loadAccount</text>
+      <text x="145" y="61" fill="#BCC8D9">(</text>
+      <text x="154" y="61" fill="#89DDFF">Account</text>
+      <text x="212" y="61" fill="#BCC8D9">&lt;T&gt;)</text>
+      <text x="16" y="91" fill="#C3E88D">"Nova"</text>
+      <text x="77" y="91" fill="#8290A5">// flagship contrast</text>
+      <text x="16" y="121" fill="#FFC777">42</text>
+      <text x="41" y="121" fill="#E8EDF7">; electric, not noisy</text>
+    </g>
+    <g transform="translate(604 88)">
+      <rect width="272" height="164" rx="12" fill="#0E1118" stroke="#273243"/>
+      <text x="16" y="26" fill="#DCE4EF" font-weight="700">STEALTH</text>
+      <text x="16" y="61" fill="#AE91D5">async</text>
+      <text x="62" y="61" fill="#80A8E8"> loadAccount</text>
+      <text x="145" y="61" fill="#B6C2D3">(</text>
+      <text x="154" y="61" fill="#85BCD5">Account</text>
+      <text x="212" y="61" fill="#B6C2D3">&lt;T&gt;)</text>
+      <text x="16" y="91" fill="#A5C88A">"Nova"</text>
+      <text x="77" y="91" fill="#7E8DA4">// quiet precision</text>
+      <text x="16" y="121" fill="#DEB77C">42</text>
+      <text x="41" y="121" fill="#DCE4EF">; restrained darkness</text>
+    </g>
+  </g>
+</svg>

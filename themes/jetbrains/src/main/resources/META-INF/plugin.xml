@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin>
+  <id>com.darkstarnova.theme</id>
+  <name>Darkstar Nova Themes</name>
+  <vendor>Chris Nicholson</vendor>
+  <description><![CDATA[Classic, Ultra, and Stealth dark themes for IntelliJ Platform IDEs.]]></description>
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <themeProvider id="0c67b971-6d93-4f58-9f06-3d7dfb205417" path="/darkstar-nova-classic.theme.json" />
+    <themeProvider id="e8db41b8-7e8c-48b2-a02c-5ee15de6d3e1" path="/darkstar-nova-ultra.theme.json" />
+    <themeProvider id="5197bf0d-c77f-4ee6-9c6e-4265f9a1a086" path="/darkstar-nova-stealth.theme.json" />
+    <bundledColorScheme path="darkstar-nova-classic" id="Darkstar Nova Classic" />
+    <bundledColorScheme path="darkstar-nova-ultra" id="Darkstar Nova Ultra" />
+    <bundledColorScheme path="darkstar-nova-stealth" id="Darkstar Nova Stealth" />
+  </extensions>
+</idea-plugin>
