@@ -3,6 +3,20 @@ set -eu
 
 SCRIPT_DIR=$(CDPATH= cd "$(dirname "$0")" && pwd)
 . "$SCRIPT_DIR/scripts/install-common.sh"
+. "$SCRIPT_DIR/scripts/installer-ui.sh"
+
+darkstar_banner UNINSTALLER
+case "${1:-}" in
+  --help|-h)
+    printf 'Usage: sh uninstall.sh\n\n'
+    printf 'Removes unchanged files recorded by the Darkstar Nova installers.\n'
+    printf 'Modified and untracked files are preserved.\n'
+    printf 'NO_COLOR=1 disables color; DARKSTAR_NOVA_ASCII=1 uses ASCII artwork.\n'
+    exit 0
+    ;;
+  '') ;;
+  *) fail "Unknown option: $1. See sh uninstall.sh --help." ;;
+esac
 
 if [ ! -f "$INSTALL_MANIFEST" ]; then
   printf 'No Darkstar Nova files are registered for removal.\n'
@@ -49,5 +63,6 @@ else
   rmdir "$STATE_HOME" 2>/dev/null || true
 fi
 
+darkstar_heading 'REMOVAL COMPLETE'
 printf 'Uninstalled %s unchanged file(s); preserved %s modified or unsafe file(s).\n' "$removed" "$preserved"
 printf 'Profiles imported into Terminal are stored in Terminal preferences; remove those manually in Terminal Settings → Profiles.\n'

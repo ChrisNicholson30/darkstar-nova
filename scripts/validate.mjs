@@ -46,7 +46,7 @@ for (const variant of variants) {
   }
 
   for (const [platform, mappings] of Object.entries(semanticSyntax)) {
-    if (!["zed", "xcode", "jetbrains"].includes(platform)) continue;
+    if (!["zed", "xcode", "xcode_workspace", "jetbrains"].includes(platform)) continue;
     for (const [scope, role] of Object.entries(mappings)) {
       check(
         typeof semanticSyntax.semantic_roles[role] === "string",
@@ -146,6 +146,40 @@ const xcodeThemes = (await readdir(resolve(repositoryRoot, "themes/xcode"))).fil
   file.endsWith(".xccolortheme"),
 );
 check(xcodeThemes.length === variantIds.length, "Expected one Xcode theme per variant.");
+const workspaceThemes = (await readdir(resolve(repositoryRoot, "themes/xcode"))).filter((file) =>
+  file.endsWith(".xcworkspacecolortheme"),
+);
+check(workspaceThemes.length === variantIds.length, "Expected one Xcode 27 workspace theme per variant.");
+for (const variant of variants) {
+  const theme = await json(`themes/xcode/${variant.name}.xcworkspacecolortheme`);
+  check(theme.fileVersion === 1, `${variant.id}: unsupported workspace theme file version.`);
+  check(theme.recipe?.colorScheme === "dark", `${variant.id}: workspace theme must use dark colors.`);
+  const palette = theme.recipe?.palette;
+  const colors = [
+    ["background", theme.recipe?.background?.customColor],
+    ["primary", palette?.primary?.custom],
+    ["secondary", palette?.secondary?.custom],
+  ];
+  const overrides = palette?.colorOverrides ?? {};
+  for (const scope of [
+    ...Object.keys(semanticSyntax.xcode_workspace),
+    "debugger", "diffAddition", "diffDeletion", "insertionPointColor",
+    "invisibles", "currentLineHighlight", "selectedTextBackgroundColor",
+  ]) {
+    const encoding = scope === "selectedTextBackgroundColor" ? "colorWithOpacity" : "color";
+    colors.push([scope, overrides[scope]?.[encoding]]);
+  }
+  for (const [scope, color] of colors) {
+    check(
+      color?.gamut === "sRGB" &&
+        Number.isFinite(color.lightness?.exact) && color.lightness.exact >= 0 && color.lightness.exact <= 1 &&
+        Number.isFinite(color.chroma?.exact) && color.chroma.exact >= 0 &&
+        Number.isFinite(color.hue?.radians) && color.hue.radians >= 0 && color.hue.radians < 2 * Math.PI &&
+        color.opacity === 1,
+      `${variant.id}: ${scope} must be an opaque sRGB OKLCH workspace color.`,
+    );
+  }
+}
 
 const jetbrainsResources = resolve(repositoryRoot, "themes/jetbrains/src/main/resources");
 const pluginXml = await readFile(resolve(jetbrainsResources, "META-INF/plugin.xml"), "utf8");
@@ -197,7 +231,7 @@ if (errorList.length) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Validated shared tokens, the Zed v0.2.0 field contract, ${xcodeThemes.length} Xcode themes, and JetBrains plugin assets.`,
+    `Validated shared tokens, the Zed v0.2.0 field contract, ${xcodeThemes.length} legacy and ${workspaceThemes.length} Xcode 27 themes, and JetBrains plugin assets.`,
   );
   if (process.platform === "darwin") console.log(`Validated ${variantIds.length} Terminal profile plists.`);
 }

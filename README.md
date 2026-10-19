@@ -23,7 +23,7 @@ The palette preview is a generated swatch, not a screenshot of an IDE. Applicati
 | Platform | Generated deliverables | Validation status |
 | --- | --- | --- |
 | Zed | Three-theme family JSON and extension manifest | Generated against the Zed theme v0.2.0 field set; visual loading still needs manual confirmation |
-| Xcode | Three native `.xccolortheme` property lists | Property-list validation; Xcode 27.1 is installed, but theme import has not been manually confirmed |
+| Xcode | Three `.xcworkspacecolortheme` recipes for Xcode 27+, plus three legacy `.xccolortheme` property lists | All three variants confirmed in Xcode 27.1's Appearance picker; workspace recipe, palette conversion, and legacy property-list validation |
 | JetBrains IDEs | Theme plugin sources, editor schemes, Gradle build configuration | Source validation; plugin build/install requires JDK 17+ and Gradle 9+ |
 | macOS Terminal | Three importable `.terminal` profiles | Generated using AppKit color/font archives and property-list validation; import needs manual confirmation |
 
@@ -32,6 +32,26 @@ The shared tokens describe visual intent. Platform mappings translate semantic r
 Zed's current v0.2.0 theme schema has no local-editor caret or text-selection color fields. The Zed output therefore themes supported focus, search, document-highlight, and UI selection colors without emitting unsupported keys; Zed's local caret and text-selection appearance remain app-controlled.
 
 ## Installation
+
+Start the global installer from this repository:
+
+```sh
+sh install.sh
+```
+
+Choose **1 — Zed**, **2 — Xcode**, **3 — macOS Terminal**, or **4 — JetBrains**. Enter multiple numbers, such as `1,2,3`, to install several targets. **5** installs all targets supported on your OS; **0** exits. Each target includes Classic, Ultra, and Stealth. JetBrains asks for your IDE's existing plugins directory and requires JDK 17+ and Gradle 9+.
+
+You can also select targets directly:
+
+```sh
+sh install.sh 1,2,3
+sh install.sh zed xcode
+DARKSTAR_NOVA_JETBRAINS_PLUGINS_DIR="$HOME/Library/Application Support/JetBrains/IntelliJIdea2024.2/plugins" sh install.sh 4
+```
+
+The installer and uninstaller share a cyan-to-violet Unicode block-letter logo and nova emblem, using only UCS-2-compatible characters. The logo adapts to narrow terminals. Use `NO_COLOR=1` to disable ANSI colors or `DARKSTAR_NOVA_ASCII=1` for ASCII artwork. Preview the banner and menu with `sh install.sh --list`; use `sh install.sh --help` for usage.
+
+The individual platform installers remain available below.
 
 ### Zed
 
@@ -45,13 +65,17 @@ For local extension testing, use Zed's **Install Dev Extension** command and sel
 
 ### Xcode
 
-Install all three `.xccolortheme` files with:
+Install all three variants in both current and legacy Xcode formats with:
 
 ```sh
 sh install/xcode/install.sh
 ```
 
-Then select a variant under Xcode Settings → Themes. The installer refuses to overwrite existing files.
+In **Xcode 27 or newer**, select a variant under **Xcode Settings → Appearance → Theme → Choose…**. This picker uses `.xcworkspacecolortheme` files; copying only the older `.xccolortheme` files does not add them to this picker. See [Apple's workspace theme guide](https://developer.apple.com/documentation/xcode/customizing-your-workspace-using-themes).
+
+In **earlier Xcode versions**, select a variant under **Xcode Settings → Themes** (or **Fonts & Colors**).
+
+If the new themes are not listed, close and reopen Settings, or restart Xcode after saving your work. Files are installed in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/`. The installer leaves matching files untouched and refuses to overwrite different existing files. It does not change the active theme or font preferences.
 
 ### JetBrains IDEs
 

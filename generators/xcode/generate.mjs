@@ -7,6 +7,7 @@ import {
   xcodeColor,
 } from "../lib/design.mjs";
 import { plistXml } from "../lib/plist.mjs";
+import { workspaceTheme } from "./workspace.mjs";
 
 export async function generateXcode({ syntax, variants }) {
   const outputDirectory = resolve(repositoryRoot, "themes/xcode");
@@ -56,6 +57,10 @@ export async function generateXcode({ syntax, variants }) {
     await writeFile(
       resolve(outputDirectory, `${variant.name}.xccolortheme`),
       plistXml(theme),
+    );
+    await writeFile(
+      resolve(outputDirectory, `${variant.name}.xcworkspacecolortheme`),
+      `${JSON.stringify(workspaceTheme(variant, syntax), null, 2)}\n`,
     );
   }
 }

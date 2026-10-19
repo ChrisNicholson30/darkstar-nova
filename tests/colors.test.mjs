@@ -61,6 +61,7 @@ test("platform generated artifacts are present for all variants", async () => {
   for (const variant of variants) {
     const id = variant.id;
     const xcode = resolve(repositoryRoot, "themes/xcode", `${variant.name}.xccolortheme`);
+    const workspace = resolve(repositoryRoot, "themes/xcode", `${variant.name}.xcworkspacecolortheme`);
     const theme = resolve(
       repositoryRoot,
       "themes/jetbrains/src/main/resources",
@@ -71,6 +72,6 @@ test("platform generated artifacts are present for all variants", async () => {
       "themes/jetbrains/src/main/resources",
       `darkstar-nova-${id}.xml`,
     );
-    await Promise.all([readFile(xcode), readFile(theme), readFile(scheme)]);
+    await Promise.all([readFile(xcode), readFile(workspace), readFile(theme), readFile(scheme)]);
   }
 });
