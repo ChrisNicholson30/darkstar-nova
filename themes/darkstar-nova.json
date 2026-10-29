@@ -214,8 +214,17 @@
           "punctuation.delimiter": {
             "color": "#C2C7D0"
           },
+          "markup.list": {
+            "color": "#D19A66"
+          },
+          "markup.list.checked": {
+            "color": "#98C379"
+          },
+          "markup.list.unchecked": {
+            "color": "#D19A66"
+          },
           "punctuation.list_marker": {
-            "color": "#C2C7D0"
+            "color": "#D19A66"
           },
           "punctuation.markup": {
             "color": "#C2C7D0"
@@ -491,8 +500,17 @@
           "punctuation.delimiter": {
             "color": "#BCC8D9"
           },
+          "markup.list": {
+            "color": "#FF7AB6"
+          },
+          "markup.list.checked": {
+            "color": "#C3E88D"
+          },
+          "markup.list.unchecked": {
+            "color": "#FFC777"
+          },
           "punctuation.list_marker": {
-            "color": "#BCC8D9"
+            "color": "#FF7AB6"
           },
           "punctuation.markup": {
             "color": "#BCC8D9"
@@ -768,8 +786,17 @@
           "punctuation.delimiter": {
             "color": "#B6C2D3"
           },
+          "markup.list": {
+            "color": "#D9A9C7"
+          },
+          "markup.list.checked": {
+            "color": "#A5C88A"
+          },
+          "markup.list.unchecked": {
+            "color": "#DEB77C"
+          },
           "punctuation.list_marker": {
-            "color": "#B6C2D3"
+            "color": "#D9A9C7"
           },
           "punctuation.markup": {
             "color": "#B6C2D3"

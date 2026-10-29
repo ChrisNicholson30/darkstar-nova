@@ -16,7 +16,7 @@ async function installerFixture(t) {
   for (const file of ["install.sh", "uninstall.sh", "scripts/install-common.sh", "scripts/installer-ui.sh"]) {
     await copyFile(resolve(repositoryRoot, file), resolve(root, file));
   }
-  for (const target of ["zed", "xcode", "terminal", "jetbrains"]) {
+  for (const target of ["zed", "zed-icons", "xcode", "terminal", "jetbrains"]) {
     await mkdir(resolve(root, "install", target), { recursive: true });
     await writeFile(resolve(root, "install", target, "install.sh"), `#!/bin/sh
 printf '%s\\t%s\\n' '${target}' "\${1:-}" >> "$DARKSTAR_NOVA_TEST_LOG"
@@ -74,14 +74,15 @@ test("named choices and All compatible respect the operating system", async (t) 
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual((await fixture.calls()).map(([name]) => name), ["zed", "xcode"]);
   await rm(fixture.env.DARKSTAR_NOVA_TEST_LOG);
-  result = fixture.run(["5"]);
+  result = fixture.run(["6"]);
   assert.equal(result.status, 0, result.stderr);
-  assert.deepEqual((await fixture.calls()).map(([name]) => name), ["zed", "xcode", "terminal", "jetbrains"]);
+  assert.deepEqual((await fixture.calls()).map(([name]) => name), ["zed", "zed-icons", "xcode", "terminal", "jetbrains"]);
   await rm(fixture.env.DARKSTAR_NOVA_TEST_LOG);
-  result = fixture.run(["5"], "", { DARKSTAR_NOVA_TEST_OS: "Linux" });
+  result = fixture.run(["6"], "", { DARKSTAR_NOVA_TEST_OS: "Linux" });
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(await fixture.calls(), [
     ["zed", ""],
+    ["zed-icons", ""],
     ["jetbrains", fixture.env.DARKSTAR_NOVA_JETBRAINS_PLUGINS_DIR],
   ]);
 });

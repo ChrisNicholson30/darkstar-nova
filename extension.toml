@@ -3,5 +3,5 @@ name = "Darkstar Nova"
 version = "1.0.0"
 schema_version = 1
 authors = ["Chris Nicholson"]
-description = "Classic, Ultra, and Stealth dark themes with a shared semantic palette."
+description = "Classic, Ultra, and Stealth dark themes and matching project-panel icons with a shared semantic palette."
 repository = "https://github.com/ChrisNicholson30/darkstar-nova"

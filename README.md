@@ -39,7 +39,7 @@ Start the global installer from this repository:
 sh install.sh
 ```
 
-Choose **1 — Zed**, **2 — Xcode**, **3 — macOS Terminal**, or **4 — JetBrains**. Enter multiple numbers, such as `1,2,3`, to install several targets. **5** installs all targets supported on your OS; **0** exits. Each target includes Classic, Ultra, and Stealth. JetBrains asks for your IDE's existing plugins directory and requires JDK 17+ and Gradle 9+.
+Choose **1 — Zed**, **2 — Xcode**, **3 — macOS Terminal**, or **4 — JetBrains**, or **5 — Zed icons**. Enter multiple numbers, such as `1,2,3`, to install several targets. **6** installs all targets supported on your OS; **0** exits. Each target includes Classic, Ultra, and Stealth. JetBrains asks for your IDE's existing plugins directory and requires JDK 17+ and Gradle 9+.
 
 You can also select targets directly:
 
@@ -62,6 +62,14 @@ sh install/zed/install.sh
 ```
 
 For local extension testing, use Zed's **Install Dev Extension** command and select this repository. The theme selector will offer **Darkstar Nova Classic**, **Darkstar Nova Ultra**, and **Darkstar Nova Stealth**. The installer does not edit Zed settings and refuses to overwrite a different file with the same name.
+
+Install the matching project-panel icons with:
+
+```sh
+sh install/zed-icons/install.sh
+```
+
+Zed loads icon themes only from extensions, so this stages a standalone extension in `~/.local/share/darkstar-nova/zed-icons`. In Zed, run **zed: install dev extension** and select that folder (highlight `zed-icons` in the file picker; don't open it). Then run **icon theme selector: toggle** and choose a Darkstar Nova Icons variant.
 
 ### Xcode
 

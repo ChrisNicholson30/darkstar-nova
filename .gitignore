@@ -4,3 +4,4 @@ themes/jetbrains/build/
 themes/jetbrains/out/
 *.iml
 .DS_Store
+dist/

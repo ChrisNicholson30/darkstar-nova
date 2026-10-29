@@ -11,7 +11,8 @@ show_menu() {
   darkstar_option 2 'Xcode' 'macOS; includes Xcode 27 workspace themes'
   darkstar_option 3 'macOS Terminal' 'Stage profiles for import'
   darkstar_option 4 'JetBrains IDEs' 'Build plugin; requires JDK 17+ and Gradle 9+'
-  darkstar_option 5 'All compatible' 'Every target supported on this OS'
+  darkstar_option 5 'Zed icons' 'Stage icon extension for dev-extension install'
+  darkstar_option 6 'All compatible' 'Every target supported on this OS'
   darkstar_option 0 'Exit' ''
   printf '\n  Select one or more: 1 or 1,2,3\n'
 }
@@ -21,7 +22,7 @@ show_help() {
 Usage: sh install.sh [SELECTION ...]
 
 Without arguments, opens the numbered installation menu.
-Choose numbers 1–5, or names: zed, xcode, terminal, jetbrains, all.
+Choose numbers 1–6, or names: zed, xcode, terminal, jetbrains, icons, all.
 Separate multiple choices with commas or spaces. Use 0 to exit.
 
 Examples:
@@ -66,6 +67,7 @@ target_zed=0
 target_xcode=0
 target_terminal=0
 target_jetbrains=0
+target_icons=0
 target_exit=0
 selected_any=0
 system=$(uname -s)
@@ -78,8 +80,10 @@ for choice in $selection; do
     2|xcode) target_xcode=1 ;;
     3|terminal) target_terminal=1 ;;
     4|jetbrains) target_jetbrains=1 ;;
-    5|all)
+    5|icons) target_icons=1 ;;
+    6|all)
       target_zed=1
+      target_icons=1
       target_jetbrains=1
       if [ "$system" = Darwin ]; then
         target_xcode=1
@@ -87,7 +91,7 @@ for choice in $selection; do
       fi
       ;;
     0|q|quit) target_exit=1; continue ;;
-    *) fail "Unknown selection: $choice. Choose 1–5, or 0 to exit. See sh install.sh --help." ;;
+    *) fail "Unknown selection: $choice. Choose 1–6, or 0 to exit. See sh install.sh --help." ;;
   esac
   selected_any=1
 done
@@ -97,7 +101,7 @@ if [ "$target_exit" -eq 1 ]; then
   printf '  Installation cancelled.\n'
   exit 0
 fi
-[ "$selected_any" -eq 1 ] || fail 'No destinations selected. Choose 1–5, or 0 to exit.'
+[ "$selected_any" -eq 1 ] || fail 'No destinations selected. Choose 1–6, or 0 to exit.'
 if [ "$system" != Darwin ] && { [ "$target_xcode" -eq 1 ] || [ "$target_terminal" -eq 1 ]; }; then
   fail 'Xcode and macOS Terminal require macOS. Choose Zed or JetBrains on this OS.'
 fi
@@ -124,9 +128,10 @@ fi
 
 installed=0
 failed=0
-for target in zed xcode terminal jetbrains; do
+for target in zed zed-icons xcode terminal jetbrains; do
   case "$target" in
     zed) [ "$target_zed" -eq 1 ] || continue ;;
+    zed-icons) [ "$target_icons" -eq 1 ] || continue ;;
     xcode) [ "$target_xcode" -eq 1 ] || continue ;;
     terminal) [ "$target_terminal" -eq 1 ] || continue ;;
     jetbrains) [ "$target_jetbrains" -eq 1 ] || continue ;;

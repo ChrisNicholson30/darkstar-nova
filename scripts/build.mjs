@@ -4,10 +4,12 @@ import { loadDesign, repositoryRoot } from "../generators/lib/design.mjs";
 import { generateJetBrains } from "../generators/jetbrains/generate.mjs";
 import { generateXcode } from "../generators/xcode/generate.mjs";
 import { generateZed } from "../generators/zed/generate.mjs";
+import { generateIcons } from "../generators/zed/icons.mjs";
 
 const design = await loadDesign();
 
 await generateZed(design);
+await generateIcons(design);
 await generateXcode(design);
 await generateJetBrains(design);
 
